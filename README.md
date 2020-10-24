@@ -1,3 +1,1 @@
-# mixed_messages >> README.md
-ls
-echo # mixed_messages
+# mixed_messages

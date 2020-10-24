@@ -1,0 +1,11 @@
+{
+  "name": "mixed-messages",
+  "version": "1.0.0",
+  "description": "Affichage de citations aléatoires",
+  "main": "app.js",
+  "author": "FrogZz",
+  "type": "module",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
