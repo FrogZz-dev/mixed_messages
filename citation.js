@@ -25,7 +25,19 @@ export const myCitations = {
     },
   ],
 
-  // retourn l'index d'une citation aléatoire
+  isValidCitation(citationTest) {
+    return citationTest.citation && citationTest.auteur;
+  },
+
+  ajoutCitation(newCitation) {
+    if (this.isValidCitation(newCitation)) {
+      this.citations.push(newCitation);
+    } else {
+      console.log("Erreur lors de l'ajout de la citation");
+    }
+  },
+
+  // retourne l'index d'une citation aléatoire
   getRandomCitation() {
     const nombreCitations = this.citations.length;
     const randomCitationNum = Math.floor(Math.random() * nombreCitations);
@@ -58,5 +70,16 @@ export const myCitations = {
 
   displayRandomCitation() {
     this.displayCitation(this.getRandomCitation());
+  },
+
+  displayAll() {
+    const nombreCitations = this.citations.length;
+
+    console.log(`Nombre de citations enregistrées: ${nombreCitations}\n`);
+
+    for (let index = 0; index < nombreCitations; index++) {
+      this.displayCitation(index);
+      console.log("");
+    }
   },
 };

@@ -1,7 +1,7 @@
 import { myCitations } from "./citation.js";
 import rlSync from "readline-sync";
 
-const commandes = ["help", "ajout", "random", "exit"];
+const commandes = ["help", "ajout", "random", "tout", "exit"];
 
 const displayHelp = () => {
   console.log("Liste des commandes:");
@@ -32,12 +32,21 @@ const getAction = () => {
   return actionInput;
 };
 
-// affuche un message à l'exécution t une 1ère citation aléatoire
+// affiche un message à l'exécution t une 1ère citation aléatoire
 const messageAccueil = (citations) => {
   console.clear();
   console.log("Bienvenue!\nVoici une citation aléatoire:");
 
   citations.displayRandomCitation();
+};
+
+// récupère les informations d'une citation
+const getNewCitation = () => {
+  return {
+    citation: rlSync.question("Citation: "),
+    auteur: rlSync.question("Auteur: "),
+    source: rlSync.question("Source: "),
+  };
 };
 
 const mainApp = () => {
@@ -51,11 +60,22 @@ const mainApp = () => {
       case "help":
         displayHelp();
         break;
+
+      case "ajout":
+        myCitations.ajoutCitation(getNewCitation());
+        break;
+
       case "random":
         myCitations.displayRandomCitation();
         break;
+
+      case "tout":
+        myCitations.displayAll();
+        break;
+
       case "exit":
         return;
+
       default:
         console.log("Cette action n'est pas encore implémentée");
         break;
